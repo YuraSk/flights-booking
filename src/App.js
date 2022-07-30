@@ -19,10 +19,10 @@ function App() {
       <Routes>
         {/* Declare all routes here: */}
         <Route exact path='/' element={ <Home /> }/ >
-        <Route exact path='/login' element={ <Login/> } />
-        <Route exact path='/signup' element={ <SignUp/> } />
-        <Route exact path='/profile' element={ <UserProfile/> } />
-        <Route exact path='/flights' element={ <Flighs/> }/>
+        <Route path='/login' element={ <Login/> } />
+        <Route path='/signup' element={ <SignUp/> } />
+        <Route path='/profile' element={ <UserProfile/> } />
+        <Route path='/flights' element={ <Flighs/> }/>
       </Routes>
 
     </>
