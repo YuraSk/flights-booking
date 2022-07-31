@@ -1,16 +1,16 @@
-import './App.css';
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Flighs from './pages/Flights';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
-import UserProfile from './pages/UserProfile';
-import Header from './components/Header';
+import Flighs from "./pages/Flights";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import UserProfile from "./pages/UserProfile";
+import Header from "./components/Header";
 
-function App() {  
+function App() {
   return (
     <>
-        {/* <li><Link to="/">Home</Link></li>
+      {/* <li><Link to="/">Home</Link></li>
         <li><Link to="/login">Login</Link></li>
         <li><Link to="/signup">SignUp</Link></li>
         <li><Link to="/profile">Profile</Link></li>
@@ -18,13 +18,12 @@ function App() {
       <Header />
       <Routes>
         {/* Declare all routes here: */}
-        <Route exact path='/' element={ <Home /> }/ >
-        <Route path='/login' element={ <Login/> } />
-        <Route path='/signup' element={ <SignUp/> } />
-        <Route path='/profile' element={ <UserProfile/> } />
-        <Route path='/flights' element={ <Flighs/> }/>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/flights" element={<Flighs />} />
       </Routes>
-
     </>
   );
 }
