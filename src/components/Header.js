@@ -1,21 +1,25 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import MenuIcon from "@mui/icons-material/Menu";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
-const navItems = [{name: 'Home', path: '/'}, {name: 'Login', path: '/login'}, {name: 'Sign up', path: '/signup'}];
+const navItems = [
+  { name: "Home", path: "/" },
+  { name: "Login", path: "/login" },
+  { name: "Sign up", path: "/signup" },
+];
 
 function Header(props) {
   const { window } = props;
@@ -26,7 +30,7 @@ function Header(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
         MUI
       </Typography>
@@ -34,8 +38,12 @@ function Header(props) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <Link href={item.path}><ListItemText primary={item.name} /></Link>
+            <ListItemButton
+              sx={{ textAlign: "center" }}
+              to={item.path}
+              component={Link}
+            >
+              <ListItemText primary={item.name} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -43,10 +51,11 @@ function Header(props) {
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: "flex" }}>
       <AppBar component="nav">
         <Toolbar>
           <IconButton
@@ -54,24 +63,27 @@ function Header(props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2, display: { sm: "none" } }}
           >
             <MenuIcon />
           </IconButton>
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            Flights Booking 
+            Flights Booking
           </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Link href={item.path} key={item.name}>
-                <Button sx={{ color: '#fff' }}>
-                  {item.name}
-                </Button>
-              </Link>
+              <Button
+                sx={{ color: "#fff" }}
+                key={item.name}
+                component={Link}
+                to={item.path}
+              >
+                {item.name}
+              </Button>
             ))}
           </Box>
         </Toolbar>
@@ -86,8 +98,11 @@ function Header(props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
           }}
         >
           {drawer}
