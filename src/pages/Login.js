@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -15,33 +15,40 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import { Alert } from "@mui/material";
 import Zoom from "@mui/material/Zoom";
+import AuthContext from "../context/AuthProvider";
+import { useNavigate } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 const theme = createTheme();
 
 export default function SignIn(props) {
+  const { setAuth } = useContext(AuthContext);
   const [errorMsg, setErrorMsg] = useState(null);
   const [hasError, setHasError] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    axios
-      .post("/login", {
-        email: data.get("email"),
-        password: data.get("password"),
-      })
-      .then((res) => {
-        sessionStorage.setItem("token", res.data.accessToken);
-        sessionStorage.setItem("user_email", res.data.user.email);
-        setErrorMsg(null);
-        setHasError(false);
-        // navigate("/");
-      })
-      .catch((err) => {
-        setErrorMsg("Wrong Credentials");
-        setHasError(true);
-      });
+    setAuth("AdminUser");
+    navigate("/");
+
+    // const data = new FormData(event.currentTarget);
+
+    // axios
+    //   .post("/login", {
+    //     email: data.get("email"),
+    //     password: data.get("password"),
+    //   })
+    //   .then((res) => {
+    //     sessionStorage.setItem("token", res.data.accessToken);
+    //     sessionStorage.setItem("user_email", res.data.user.email);
+    //     setErrorMsg(null);
+    //     setHasError(false);
+    //     // navigate("/");
+    //   })
+    //   .catch((err) => {
+    //     setErrorMsg("Wrong Credentials");
+    //     setHasError(true);
+    //   });
   };
 
   return (
